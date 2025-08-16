@@ -1,0 +1,79 @@
+
+COMPREHENSIVE KNN ANALYSIS REPORT
+===============================
+Date: 2025-06-06 18:43:55
+
+EXPERIMENT OVERVIEW
+==================
+This analysis tested K-Nearest Neighbors classification on cancer stage prediction
+with systematic parameter exploration:
+
+• n_neighbors tested: [2, 5, 7, 9, 11]
+• k_folds tested: [1, 2, 3, 4, 5, 7]
+• Total combinations: 24 parameter sets
+• Selected features: 8
+
+SELECTED FEATURES
+================
+ 1. Genetic_Risk
+ 2. Air_Pollution
+ 3. Alcohol_Use
+ 4. Smoking
+ 5. Obesity_Level
+ 6. Target_Severity_Score
+ 7. Age
+ 8. Survival_Years
+
+PERFORMANCE SUMMARY
+==================
+Best Models:
+• Highest Test Accuracy: n_neighbors=15.0, k_folds=1.0 → 0.560
+• Highest Test F1: n_neighbors=15.0, k_folds=1.0 → 0.685
+• Highest CV F1: n_neighbors=15.0, k_folds=1.0 → 0.685
+
+FINAL RECOMMENDATION
+===================
+Optimal Parameters:
+• n_neighbors: 15
+• k_folds: 1
+• Expected F1 Score: 0.685
+
+DETAILED RESULTS BY N_NEIGHBORS
+==============================
+            test_accuracy             test_f1             overfitting
+                     mean  std    max    mean  std    max        mean
+n_neighbors                                                          
+2                   0.471  0.0  0.471   0.454  0.0  0.454       0.292
+3                   0.530  0.0  0.530   0.625  0.0  0.625       0.231
+4                   0.494  0.0  0.494   0.533  0.0  0.533       0.213
+5                   0.544  0.0  0.544   0.645  0.0  0.645       0.160
+7                   0.547  0.0  0.547   0.655  0.0  0.655       0.133
+9                   0.550  0.0  0.550   0.663  0.0  0.663       0.110
+12                  0.537  0.0  0.537   0.636  0.0  0.636       0.105
+15                  0.560  0.0  0.560   0.685  0.0  0.685       0.077
+
+DETAILED RESULTS BY K_FOLDS
+===========================
+        cv_f1_mean               test_f1               overfitting
+              mean    std    max    mean    std    max        mean
+k_folds                                                           
+1            0.612  0.078  0.685   0.612  0.078  0.685       0.165
+3            0.611  0.078  0.681   0.612  0.078  0.685       0.165
+5            0.611  0.078  0.684   0.612  0.078  0.685       0.165
+
+KEY INSIGHTS
+============
+1. Model Complexity: Higher n_neighbors generally reduce overfitting but may underfit
+2. Cross-validation: Higher k_folds provide better generalization estimates
+3. Stability: Some parameter combinations show high variance across folds
+4. Trade-offs: Balance between training performance and generalization
+
+FILES GENERATED
+===============
+• comprehensive_knn_results.csv: All experimental results
+• performance_summary.json: Best model parameters
+• Multiple visualization plots in figures/knncp1/ directory
+• Feature analysis results in data_analysis/ directory
+
+END OF REPORT
+=============
